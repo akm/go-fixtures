@@ -16,6 +16,10 @@ $(GOLANGCI_LINT_CLI):
 lint: $(GOLANGCI_LINT_CLI)
 	golangci-lint run
 
+COVER_OUT=coverage.out
+COVER_HTML=coverage.html
+
 .PHONY: test
 test:
-	go test -v ./...
+	go test -v -cover ./... -coverprofile=$(COVER_OUT)
+	go tool cover -html=$(COVER_OUT) -o $(COVER_HTML)
