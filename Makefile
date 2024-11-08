@@ -3,7 +3,7 @@ default: build lint test
 
 .PHONY: build
 build:
-	go build ./...
+	go build -v ./...
 
 GOLANG_TOOL_PATH_TO_BIN=$(shell go env GOPATH)
 GOLANGCI_LINT_CLI_VERSION?=latest
