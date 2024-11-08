@@ -1,6 +1,6 @@
 module github.com/akm/go-fixtures
 
-go 1.23.2
+go 1.21.13
 
 require (
 	gorm.io/driver/mysql v1.5.7
