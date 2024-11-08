@@ -1,0 +1,16 @@
+name: "go-fixtures-test"
+services:
+  mysql:
+    image: mysql:8.0.38
+    restart: always
+    environment:
+      MYSQL_DATABASE: go-fixtures-db
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_ROOT_HOST: "%"
+    ports:
+      - "3306:3306"
+    networks:
+      - network1
+
+networks:
+  network1:
