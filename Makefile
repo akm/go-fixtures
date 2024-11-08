@@ -20,6 +20,14 @@ COVER_OUT=coverage.out
 COVER_HTML=coverage.html
 
 .PHONY: test
-test:
+test: dbmigrate-up
 	go test -v -cover ./... -coverprofile=$(COVER_OUT)
 	go tool cover -html=$(COVER_OUT) -o $(COVER_HTML)
+
+.PHONY: containers-up
+containers-up:
+	$(MAKE) -C examples/containers up
+
+.PHONY: dbmigrate-up
+dbmigrate-up: containers-up
+	$(MAKE) -C examples/dbmigrations up
