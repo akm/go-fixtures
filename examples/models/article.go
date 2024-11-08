@@ -8,5 +8,5 @@ type Article struct {
 	UpdatedAt time.Time
 	AuthorID  int
 	Title     string
-	Body      string
+	Url       string
 }

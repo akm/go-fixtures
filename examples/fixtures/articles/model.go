@@ -14,7 +14,7 @@ type Article struct {
 type Option = func(*Article)
 
 func Title(v string) Option { return func(a *Article) { a.Title = v } }
-func Body(v string) Option  { return func(a *Article) { a.Body = v } }
+func Url(v string) Option   { return func(a *Article) { a.Url = v } }
 func AuthorID(v int) Option { return func(a *Article) { a.AuthorID = v } }
 func Author(v *users.User) Option {
 	return func(a *Article) {

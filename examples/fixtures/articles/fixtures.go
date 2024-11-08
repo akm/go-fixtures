@@ -27,7 +27,7 @@ func (f *Fixtures) NewFiveRules(opts ...Option) *Article {
 	return fixtures.NewWithDefaults(opts,
 		Author(f.Users.RobPike()),
 		Title("Rob Pike's 5 Rules of Programming"),
-		Body("Rule 1. You can't tell where a program is going to spend its time..."),
+		Url("https://users.ece.utexas.edu/~adnan/pike.html"),
 	)
 }
 
@@ -35,7 +35,7 @@ func (f *Fixtures) NewGoProverbs(opts ...Option) *Article {
 	return fixtures.NewWithDefaults(opts,
 		Author(f.Users.RobPike()),
 		Title("Go Proverbs"),
-		Body("Simple, Poetic, Pithy..."),
+		Url("https://go-proverbs.github.io/"),
 	)
 }
 
@@ -43,7 +43,7 @@ func (f *Fixtures) NewABriefIntroduction(opts ...Option) *Article {
 	return fixtures.NewWithDefaults(opts,
 		Author(f.Users.KenThompson()),
 		Title("A Brief Introduction"),
-		Body("Kenneth Lane Thompson was the principal inventor of UNIX..."),
+		Url("https://www.linfo.org/thompson.html"),
 	)
 }
 
