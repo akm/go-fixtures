@@ -27,6 +27,7 @@ test: dbmigrate-up
 .PHONY: containers-up
 containers-up:
 	$(MAKE) -C examples/containers up
+	sleep 5
 
 .PHONY: dbmigrate-up
 dbmigrate-up: containers-up
