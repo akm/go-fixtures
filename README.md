@@ -131,7 +131,7 @@ func NewFixtures() *Fixtures {
 
 Define methods to create specific fixture instances:
 
-```
+```golang
 func (f *Fixtures) NewFiveRules(opts ...Option) *Article {
 	return fixtures.NewWithDefaults(opts,
 		Author(f.Users.RobPike()),
@@ -149,7 +149,7 @@ These methods must:
 
 #### Add Fixture Retrieval Methods
 
-```
+```golang
 func (f *Fixtures) FiveRules(opts ...Option) *Article  { return f.Get("FiveRules", opts...) }
 ```
 
