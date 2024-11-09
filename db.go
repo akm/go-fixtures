@@ -7,14 +7,17 @@ import (
 	"gorm.io/gorm"
 )
 
+// DB wraps a gorm.DB instance.
 type DB struct {
 	*gorm.DB
 }
 
+// NewWithGormDB creates a new DB instance with an existing gorm.DB.
 func NewWithGormDB(gormDB *gorm.DB) *DB {
 	return &DB{DB: gormDB}
 }
 
+// NewDB initializes a new DB instance with the given gorm.Dialector and options.
 func NewDB(dialector gorm.Dialector, opts ...gorm.Option) func(t *testing.T) *DB {
 	return func(t *testing.T) *DB {
 		gormDB, err := gorm.Open(dialector, opts...)
@@ -25,6 +28,7 @@ func NewDB(dialector gorm.Dialector, opts ...gorm.Option) func(t *testing.T) *DB
 	}
 }
 
+// Create inserts the given values into the database.
 func (f *DB) Create(t *testing.T, values ...interface{}) {
 	for _, i := range values {
 		if r := f.DB.Create(i); r.Error != nil {
@@ -33,6 +37,7 @@ func (f *DB) Create(t *testing.T, values ...interface{}) {
 	}
 }
 
+// Update modifies the given values in the database.
 func (f *DB) Update(t *testing.T, values ...interface{}) {
 	for _, i := range values {
 		if r := f.DB.Updates(i); r.Error != nil {
@@ -41,6 +46,7 @@ func (f *DB) Update(t *testing.T, values ...interface{}) {
 	}
 }
 
+// Delete removes the given values from the database.
 func (f *DB) Delete(t *testing.T, values ...interface{}) {
 	for _, i := range values {
 		if r := f.DB.Delete(i); r.Error != nil {
@@ -49,6 +55,7 @@ func (f *DB) Delete(t *testing.T, values ...interface{}) {
 	}
 }
 
+// DeleteFromTable deletes all records from the tables of the given models.
 func (f *DB) DeleteFromTable(t *testing.T, models ...interface{}) {
 	for _, m := range models {
 		stmt := &gorm.Statement{DB: f.DB}
