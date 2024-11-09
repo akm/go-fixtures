@@ -11,5 +11,5 @@ func New[T any](opts ...func(*T)) *T {
 
 func NewWithDefaults[T any](opts []func(*T), defaultOpts ...func(*T)) *T {
 	options := append(defaultOpts, opts...)
-	return New(options...)
+	return New[T](options...)
 }
