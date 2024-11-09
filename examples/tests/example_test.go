@@ -60,7 +60,7 @@ func TestExample(t *testing.T) {
 	defer db.Close()
 
 	gormLogger := logger.New(
-		log.New(os.Stdout, "\r\n", log.LstdFlags), // io writer
+		log.New(os.Stdout, "\r\n", log.LstdFlags),
 		logger.Config{SlowThreshold: time.Second, LogLevel: logger.Info},
 	)
 
