@@ -63,13 +63,12 @@ func TestExample(t *testing.T) {
 		log.New(os.Stdout, "\r\n", log.LstdFlags),
 		logger.Config{SlowThreshold: time.Second, LogLevel: logger.Info},
 	)
-
 	fx := fixtures.NewDB(
 		mysql.New(mysql.Config{Conn: db}),
 		&gorm.Config{Logger: gormLogger},
 	)(t)
-	fx.DeleteFromTable(t, &articles.Article{})
-	fx.DeleteFromTable(t, &users.User{})
+
+	fx.DeleteFromTable(t, &articles.Article{}, &users.User{})
 
 	fxArticles := articles.NewFixtures()
 	fx.Create(t,
