@@ -5,7 +5,7 @@
 
 ## Overview
 
-The `fixtures` package simplifies database operations in tests using models based on the Functional Option Pattern. It integrates with [GORM](https://gorm.io/) for object manipulation but remains agnostic to the specific models you use. Test fixtures can be defined directly in Go code.
+`fixtures` package simplifies database operations in tests using models based on Functional Option Pattern. It integrates with [GORM](https://gorm.io/) for object manipulation but remains agnostic to the specific models you use. Test fixtures can be defined directly in Go code.
 
 `fixtures` package supports database operations in test with Functional Option Pattern based models.
 `fixtures` uses [GORM](https://gorm.io/) to manipulate objects but it doesn't matter your model.
