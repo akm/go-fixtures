@@ -47,7 +47,7 @@ go get github.com/akm/go-fixtures
 
 If you already have a model, you can embed it. Otherwise, define a new model or skip this step if it's unnecessary.
 
-#### Original model
+#### Original Model
 
 ```golang
 type Article struct {
@@ -60,7 +60,7 @@ type Article struct {
 }
 ```
 
-#### Fixture model
+#### Fixture Model
 
 ```golang
 type Article struct {
@@ -127,7 +127,7 @@ func NewFixtures() *Fixtures {
 }
 ```
 
-#### Add `NewXXX` method for each fixture.
+#### Add `NewXXX` Methods for each Fixture.
 
 Define methods to create specific fixture instances:
 
