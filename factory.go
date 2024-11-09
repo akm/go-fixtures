@@ -5,18 +5,23 @@ import (
 	"strings"
 )
 
+// Factory is an interface that defines a method to create a new instance of type T.
 type Factory[T any] interface {
 	New(key string, opts ...func(*T)) *T
 }
+
+// Getter is an interface that defines a method to get an instance of type T.
 type Getter[T any] interface {
 	Get(key string, opts ...func(*T)) *T
 }
 
+// Cache is a struct that implements caching for instances of type T.
 type Cache[T any] struct {
 	Factory[T]
 	instances map[string]*T
 }
 
+// NewCache creates a new Cache with the given Factory.
 func NewCache[T any](f Factory[T]) *Cache[T] {
 	return &Cache[T]{
 		Factory:   f,
@@ -24,6 +29,7 @@ func NewCache[T any](f Factory[T]) *Cache[T] {
 	}
 }
 
+// Get retrieves an instance from the cache or creates a new one using the Factory.
 func (c *Cache[T]) Get(key string, opts ...func(*T)) *T {
 	r, ok := c.instances[key]
 	if ok {
@@ -34,8 +40,10 @@ func (c *Cache[T]) Get(key string, opts ...func(*T)) *T {
 	return r
 }
 
+// FactoryDispatcher is a map that dispatches factory methods based on a key.
 type FactoryDispatcher[T any] map[string]func(...func(*T)) *T
 
+// New creates a new instance of type T using the factory method associated with the key.
 func (d FactoryDispatcher[T]) New(key string, opts ...func(*T)) *T {
 	fn := d[key]
 	if fn == nil {
@@ -94,11 +102,13 @@ func NewFactoryDispatcher[T any](factory any) FactoryDispatcher[T] {
 	return res
 }
 
+// Fixtures is a struct that combines a FactoryDispatcher and a Cache.
 type Fixtures[T any] struct {
 	FactoryDispatcher[T]
 	*Cache[T]
 }
 
+// NewFixtures creates a new Fixtures instance with the given implementation.
 func NewFixtures[T any](impl any) *Fixtures[T] {
 	r := &Fixtures[T]{}
 	r.FactoryDispatcher = NewFactoryDispatcher[T](impl)
