@@ -5,11 +5,7 @@
 
 ## Overview
 
-`fixtures` package simplifies database operations in tests using models based on Functional Option Pattern. It integrates with [GORM](https://gorm.io/) for object manipulation but remains agnostic to the specific models you use. Test fixtures can be defined directly in Go code.
-
-`fixtures` package supports database operations in test with Functional Option Pattern based models.
-`fixtures` uses [GORM](https://gorm.io/) to manipulate objects but it doesn't matter your model.
-You can define your test fixtures in Go code.
+`fixtures` package simplifies database operations in tests using models based on [Functional Options Pattern](https://dave.cheney.net/2014/10/17/functional-options-for-friendly-apis). It integrates with [GORM](https://gorm.io/) for object manipulation but remains agnostic to the specific models you use. Test fixtures can be defined directly in Go code.
 
 ### ORM support
 
@@ -39,7 +35,7 @@ go get github.com/akm/go-fixtures
 ## How to Create Models and Fixtures
 
 1. Define fixture models.
-1. Add functional `Option` types for the models.
+1. Add functional `Option`s types for the models.
 1. Create a `Fixtures` struct for each model.
 1. Use the defined fixtures in your tests.
 
