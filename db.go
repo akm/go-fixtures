@@ -67,3 +67,12 @@ func (f *DB) DeleteFromTable(t *testing.T, models ...interface{}) {
 		}
 	}
 }
+
+// Reload reloads the given models from the database.
+func (f *DB) Reload(t *testing.T, models ...interface{}) {
+	for _, i := range models {
+		if r := f.DB.First(i); r.Error != nil {
+			t.Fatalf("failed to reload: %#v because of %+v", i, r.Error)
+		}
+	}
+}
