@@ -37,6 +37,12 @@ func (f *DB) Create(t *testing.T, values ...interface{}) {
 	}
 }
 
+// CreateAndReload creates the given values in the database and then reloads them.
+func (f *DB) CreateAndReload(t *testing.T, values ...interface{}) {
+	f.Create(t, values...)
+	f.Reload(t, values...)
+}
+
 // Update modifies the given values in the database.
 func (f *DB) Update(t *testing.T, values ...interface{}) {
 	for _, i := range values {
@@ -44,6 +50,11 @@ func (f *DB) Update(t *testing.T, values ...interface{}) {
 			t.Fatalf("failed to update: %#v because of %+v", i, r.Error)
 		}
 	}
+}
+
+func (f *DB) UpdateAndReload(t *testing.T, values ...interface{}) {
+	f.Update(t, values...)
+	f.Reload(t, values...)
 }
 
 // Delete removes the given values from the database.
