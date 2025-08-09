@@ -52,6 +52,11 @@ func (f *DB) Update(t *testing.T, values ...interface{}) {
 	}
 }
 
+func (f *DB) UpdateAndReload(t *testing.T, values ...interface{}) {
+	f.Update(t, values...)
+	f.Reload(t, values...)
+}
+
 // Delete removes the given values from the database.
 func (f *DB) Delete(t *testing.T, values ...interface{}) {
 	for _, i := range values {
