@@ -74,7 +74,7 @@ func (f *DB) DeleteFromTable(t *testing.T, models ...interface{}) {
 			t.Fatalf("failed to parse model: %v", err)
 		}
 		if r := f.DB.Exec(fmt.Sprintf("DELETE FROM %s", stmt.Schema.Table)); r.Error != nil {
-			t.Fatalf("failed to delete table: %v", r.Error)
+			t.Fatalf("failed to delete table %q: %+v", stmt.Schema.Table, r.Error)
 		}
 	}
 }
